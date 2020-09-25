@@ -1,0 +1,85 @@
+extends ./layout.pug
+
+block content
+ h1 #{thread.title}
+ div#breadcrumb
+  a(href='/') Home
+  span >
+  a(href='/boards') Forum
+  span >
+  a(href='/boards/' + board._id + '/threads') #{board.title}
+ each post in posts
+  div.post
+   if post.deleted
+    p.postDeleted Deleted post
+   else
+    div.postHeader
+     span.author #{post.author.username}
+     span.datePosted Posted on #{post.dateCreated}
+     if post.dateUpdated
+      br
+      span.dateEdited Edited on #{post.dateUpdated}
+    pre.postContent #{post.content}
+     div.postBottom
+      if post.author._id == currentUser
+       hr
+       form(style='display: none', data-url='/boards/' + board._id + '/threads/' + thread._id + '/posts/' + post._id)
+        textarea.postEditor(name='editedPost') #{post.content}
+        br
+        input.postEditConfirm(type='button', value='Save')
+        input.postEditCancel(type='button', value='Cancel')
+       a.postEditLink(href='#') Edit
+       form(style='display: none', data-url='/boards/' + board._id + '/threads/' + thread._id + '/posts/' + post._id)
+        input.postDeleteConfirm(type='button', value='Confirm')
+        input.postDeleteCancel(type='button', value='Cancel')
+       a.postDeleteLink(href='#') Delete
+ button#postCreatorButton(type='button', data-toggle='collapse', data-target='#postCreator') New Post
+ div#postCreator.collapse
+  form(action='/boards/' + board._id + '/threads/' + thread._id + '/posts', method='post')
+   div
+    label(for='postContent') Post Content:
+    textarea#postContent(name='postContent')
+   input(type='submit', value='Submit')
+ script(type='text/javascript').
+  $('.postEditLink').click(function(){
+   $(this).prev().toggle();
+   $(this).toggle();
+   $(this).next().next().toggle();
+  });
+  $('.postEditCancel').click(function(){
+   $(this).parent().toggle();
+   $(this).parent().next().toggle();
+   $(this).parent().next().next().next().toggle();
+   $(this).prev().prev().prev().val($(this).parent().parent().parent().clone().children().remove().end().text());
+   
+  });
+  $('.postEditConfirm').click(function(){
+   $.ajax({
+    url: $(this).parent().attr('data-url'),
+    method: 'PATCH',
+    data: {editedPost: $(this).prev().prev().val()}
+   }).done(function(){
+    location.reload();
+   });
+  });
+  $('.postDeleteLink').click(function(){
+   $(this).prev().prev().toggle();
+   $(this).prev().toggle();
+   $(this).toggle();
+  });
+  $('.postDeleteCancel').click(function(){
+   $(this).parent().prev().toggle();
+   $(this).parent().toggle();
+   $(this).parent().next().toggle();
+  });
+  $('.postDeleteConfirm').click(function(){
+   $.ajax({
+    url: $(this).parent().attr('data-url'),
+    method: 'DELETE'
+   }).done(function(){
+    location.reload();
+   });
+  });
+  $('#postCreatorButton').click(function(){
+   $("html, body").animate({scrollTop: $(document).height()});
+  });

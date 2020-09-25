@@ -1,0 +1,7 @@
+/boards/:bID/threads/:tID/posts/:pID
+
+/register
+
+/login
+
+/logout

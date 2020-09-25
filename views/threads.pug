@@ -1,0 +1,25 @@
+extends ./layout.pug
+
+block content
+ h1 #{board.title}
+ div#breadcrumb
+  a(href='/') Home
+  span >
+  a(href='/boards') Forum
+ button(type='button', data-toggle='collapse', data-target='#threadCreator') New Thread
+ div#threadCreator.collapse
+  form(action='/boards/' + board._id + '/threads', method='post')
+   div
+    label(for='threadTitle') Thread Title:
+    input#threadTitle(type='text', name='threadTitle')
+   div
+    label(for='threadContent') Thread Content:
+    textarea#threadContent(name='threadContent')
+   input(type='submit', value='Submit')
+ table
+  tr
+   th Threads
+  each thread in board.threads
+   tr
+    td
+     a(href='/boards/' + board._id + '/threads/' + thread._id + '/posts') #{thread.title}

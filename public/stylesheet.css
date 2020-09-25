@@ -1,0 +1,191 @@
+body{
+ width: 90%;
+ margin: 0 auto;
+}
+
+nav{
+ position: relative;
+ height: 1em;
+}
+
+nav div{
+ position: absolute;
+ right: 0;
+}
+
+nav div a{
+ margin: 0 5px 0 5px;
+ padding: 3px;
+ border-bottom-left-radius: 5px;
+ border-bottom-right-radius: 5px;
+ color: white;
+ background-color: gray;
+}
+
+h1{
+ text-align: center;
+}
+
+.glyphicon{
+ font-size: 0.7em;
+ margin: 0 0.5em 0 0;
+}
+
+footer{
+ text-align: right;
+}
+
+#breadcrumb{
+ margin: 10px 0;
+}
+
+#breadcrumb span{
+ margin: 0 5px;
+}
+
+#boardsLink{
+ display: block;
+ text-align: center;
+ width: 150px;
+ margin: 0 auto;
+ font-size: 1.5em;
+}
+
+#register, #login{
+ width: 400px;
+ margin: 0 auto;
+}
+
+#register div, #login div{
+ margin: 5px 0;
+}
+
+#register label, #login label{
+ width: 195px;
+ margin: 0 10px 0 0;
+ text-align: right;
+}
+
+#register input[type='submit'], #login input[type='submit']{
+ display: block;
+ width: 150px;
+ margin: 0 auto 0 auto;
+}
+
+#register input[type='text'], #register input[type='email'], #register input[type='password']{
+ width: 150px;
+}
+#login input[type='text'], #login input[type='password']{
+ width: 100px;
+}
+
+#boardCreator div, #threadCreator div, #postCreator div{
+ margin: 10px 0;
+}
+
+#boardCreator label{
+ margin: 0 10px 0 0;
+}
+
+#threadCreator label{
+ width: 115px;
+ margin: 0 10px 0 0;
+ text-align: right;
+}
+
+#postCreator label{
+ display: block;
+}
+
+table{
+ width: 100%;
+ margin: 10px 0;
+ border-collapse: separate;
+ border-spacing: 0;
+}
+
+th, td{
+ border: 2px solid gray;
+ padding: 5px; 
+}
+
+td{
+ border-top: 0px;
+}
+
+tr:first-child th:first-child {
+    border-top-left-radius: 5px;
+}
+
+tr:first-child th:last-child {
+    border-top-right-radius: 5px;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+.post{
+ margin: 5px 0;
+}
+
+.postDeleted{
+ background-color: gray;
+ color: white;
+ margin: 0;
+ padding: 0 0 0 10px;
+ border: 1px solid black;
+ border-radius: 5px;
+}
+
+.postHeader{
+ background-color: gray;
+ color: white;
+ height: 3.1em;
+ border: 1px solid black;
+ border-bottom: 0;
+ border-top-left-radius: 5px;
+ border-top-right-radius: 5px;
+}
+
+.author{
+ padding: 0 10px;
+ height: 3em;
+ vertical-align: middle;
+ float: left;
+ border-right: 1px solid white;
+}
+
+.datePosted, .dateEdited{
+ padding: 0 10px;
+}
+
+.postContent{
+ clear: left;
+ background-color: #EEE;
+ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+ font-size: 14px;
+ line-height: 1.42857143;
+ margin: 0;
+ border: 1px solid black;
+ border-radius: 0;
+ border-bottom-left-radius: 5px;
+ border-bottom-right-radius: 5px;
+}
+
+hr{
+ border-color: white;
+ margin: 5px 0;
+}
+
+.postEditLink{
+ margin: 0 10px 0 0;
+}
+
+#postCreatorButton{
+ margin: 10px 0;
+}
